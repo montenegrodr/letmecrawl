@@ -4,6 +4,7 @@ Let me crawl
 Curate proxies from various sources in terms of latency.
 
 .. code-block:: bash
+
     >> from letmecrawl import LMC
     >> for proxy in LMC().pop():
     >>     print proxy
@@ -14,4 +15,5 @@ Curate proxies from various sources in terms of latency.
 Installation
 -----------------
 .. code-block:: bash
+
     pip install letmecrawl
