@@ -10,7 +10,7 @@ name = "letmecrawl"
 rootdir = os.path.abspath(os.path.dirname(__file__))
 
 # Restructured text project description read from file
-long_description = open(os.path.join(rootdir, 'README.md')).read()
+long_description = open(os.path.join(rootdir, 'README.rst')).read()
 
 # Python 2.7 or later needed
 if sys.version_info < (2, 7, 0, 'final', 0):
