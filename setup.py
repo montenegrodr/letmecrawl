@@ -3,7 +3,7 @@
 import os
 import sys
 
-from distutils.core import setup
+from setuptools import setup
 
 name = "letmecrawl"
 
@@ -39,6 +39,7 @@ setup(
     classifiers=[
         'Programming Language :: Python :: 2.7',
     ],
+    download_url='https://github.com/montenegrodr/letmecrawl/archive/0.1.tar.gz',
     keywords='scrape crawl',
     packages=packages,
     package_dir=package_dir,
