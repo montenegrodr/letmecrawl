@@ -29,7 +29,7 @@ package_dir = {name: name}
 
 setup(
     name=name,
-    version='0.0.2',
+    version='0.0.3',
     description='let me crawl',
     long_description=long_description,
     url='https://github.com/montenegrodr/letmecrawl',
@@ -39,8 +39,9 @@ setup(
     classifiers=[
         'Programming Language :: Python :: 2.7',
     ],
-    download_url='https://github.com/montenegrodr/letmecrawl/archive/0.0.2.tar.gz',
+    download_url='https://github.com/montenegrodr/letmecrawl/archive/0.0.3.tar.gz',
     keywords='scrape crawl',
     packages=packages,
     package_dir=package_dir,
+    install_requires=['six']
 )
