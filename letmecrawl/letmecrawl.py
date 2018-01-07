@@ -10,17 +10,22 @@ import json
 import time
 import logging
 import threading
+import pkg_resources
 
 from .sources import Source
 from .models import OrderedTable, Singleton
 
 logger = logging.getLogger(__name__)
 
-CURATE_RELOAD_TIME = 5 * 60 # seconds
+CURATE_RELOAD_TIME = 5 * 60  # seconds
 
 
 def curate():
-    with open('sources.json') as f:
+    resource_package = __name__
+    sources = '/sources.json'
+    sources_path = pkg_resources.resource_filename(resource_package, sources)
+
+    with open(sources_path) as f:
         sources = [Source.factory(s, u) for (s, u) in json.load(f).items()]
 
     table = OrderedTable()

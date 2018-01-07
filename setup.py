@@ -17,7 +17,7 @@ if sys.version_info < (2, 7, 0, 'final', 0):
     raise SystemExit, 'Python 2.7 or later is required!'
 
 # Data files used e.g. in tests
-package_data = {name: 'sources.json'}
+# package_data = {name: 'letmecrawl/sources.json'}
 
 # Build a list of all project modules
 packages = []
@@ -29,7 +29,7 @@ package_dir = {name: name}
 
 setup(
     name=name,
-    version='0.0.3',
+    version='0.0.5',
     description='let me crawl',
     long_description=long_description,
     url='https://github.com/montenegrodr/letmecrawl',
@@ -39,9 +39,11 @@ setup(
     classifiers=[
         'Programming Language :: Python :: 2.7',
     ],
-    download_url='https://github.com/montenegrodr/letmecrawl/archive/0.0.3.tar.gz',
+    download_url='https://github.com/montenegrodr/letmecrawl/archive/0.0.5.tar.gz',
     keywords='scrape crawl',
     packages=packages,
     package_dir=package_dir,
-    install_requires=['six']
+    # package_data=package_data,
+    install_requires=['six'],
+    include_package_data=True
 )
