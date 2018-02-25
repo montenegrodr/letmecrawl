@@ -29,7 +29,7 @@ package_dir = {name: name}
 
 setup(
     name=name,
-    version='0.6',
+    version='0.8',
     description='let me crawl',
     long_description=long_description,
     url='https://github.com/montenegrodr/letmecrawl',
