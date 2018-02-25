@@ -20,6 +20,15 @@ logger = logging.getLogger(__name__)
 CURATE_RELOAD_TIME = 5 * 60  # seconds
 
 
+def letmecrawl():
+    for proxy in LMC().pop():
+        yield proxy
+
+
+def stop():
+    LMC().stop()
+
+
 def curate():
     resource_package = __name__
     sources = '/sources.json'
