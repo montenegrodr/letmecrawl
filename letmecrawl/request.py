@@ -13,11 +13,13 @@ def request(url, method='GET', proxy_ip=None, proxy_port=None, timeout=5):
 
     parts = urlparse(url)
 
+    connection = httplib.HTTPSConnection if parts[0] == 'https' else httplib.HTTPConnection
+
     if proxy_ip:
-        con = httplib.HTTPConnection(proxy_ip, proxy_port, timeout=timeout)
+        con = connection(proxy_ip, proxy_port, timeout=timeout)
         path = url
     else:
-        con = httplib.HTTPConnection(parts.netloc)
+        con = connection(parts.netloc)
         path = parts.path or '/'
     con.request(method, path)
     return con.getresponse()

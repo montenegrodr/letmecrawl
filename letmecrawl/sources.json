@@ -1,3 +1,4 @@
 {
-  "spy": "http://spys.one/pl.txt"
+  "spy": "http://spys.one/en/",
+  "stamparm": "https://raw.githubusercontent.com/stamparm/aux/master/fetch-some-list.txt"
 }

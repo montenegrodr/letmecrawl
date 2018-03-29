@@ -4,6 +4,7 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 import re
+import json
 
 from . import request
 
@@ -22,6 +23,7 @@ class Source(object):
     @staticmethod
     def factory(name, url):
         if name == 'spy': return Spys(url)
+        if name == 'stamparm': return Stamparm(url)
         raise ParserNotFoundException
 
 
@@ -36,3 +38,12 @@ class Spys(Source):
         content = request.read(self.url)
         ips = re.findall(ip_pattern, content)
         return map(Proxy, ips)
+
+
+class Stamparm(Source):
+    def list(self):
+        content = request.read(self.url)
+        return [
+            Proxy('{}:{}'.format(s.get('ip'), s.get('port')))
+            for s in json.loads(content) if s.get('proto', '') == 'http'
+            ]
