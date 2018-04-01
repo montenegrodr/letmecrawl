@@ -8,7 +8,7 @@ import time
 import logging
 import threading
 
-from .request import request
+from .request import test_proxy
 from sys import maxint
 from operator import attrgetter
 
@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 
 THREAD_RELOAD_TIME = 60 # seconds
 
+MINIMUM_ELAPSED = 5
 
 class Singleton(type):
     _instances = {}
@@ -45,15 +46,11 @@ class OrderedTableItem(threading.Thread):
             try:
                 # TODO add timeout
                 start = time.time()
-                request(
-                    url='http://www.google.com',
-                    method='GET',
-                    proxy_ip=self.proxy.ip,
-                    proxy_port=self.proxy.port
-                )
+                self.keep_alive = test_proxy(self.proxy.ip, self.proxy.port)
                 self.elapsed = time.time() - start
                 logger.debug('Elapsed time {}'.format(self.elapsed))
-                while time.time() - start + self.elapsed < THREAD_RELOAD_TIME and self.keep_alive:
+                while time.time() - start + self.elapsed < THREAD_RELOAD_TIME \
+                        and self.keep_alive:
                     time.sleep(1)
             except Exception as exp:
                 # TODO catch connection exceptions
@@ -110,7 +107,10 @@ class OrderedTable(with_metaclass(Singleton, object)):
             logging.debug('Tried to remove {}'.format(item))
 
     def get_sorted_table(self):
-        return sorted(self.table, key=attrgetter('elapsed'))
+        return sorted(
+            filter(lambda x: x.elapsed < MINIMUM_ELAPSED, self.table),
+            key=attrgetter('elapsed')
+        )
 
     def first(self):
         if self.size() == 0:

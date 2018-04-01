@@ -16,9 +16,6 @@ long_description = open(os.path.join(rootdir, 'README.rst')).read()
 if sys.version_info < (2, 7, 0, 'final', 0):
     raise SystemExit, 'Python 2.7 or later is required!'
 
-# Data files used e.g. in tests
-# package_data = {name: 'letmecrawl/sources.json'}
-
 # Build a list of all project modules
 packages = []
 for dirname, _, filenames in os.walk(name):
@@ -29,7 +26,7 @@ package_dir = {name: name}
 
 setup(
     name=name,
-    version='0.8',
+    version='0.9',
     description='let me crawl',
     long_description=long_description,
     url='https://github.com/montenegrodr/letmecrawl',
@@ -43,7 +40,6 @@ setup(
     keywords='scrape crawl',
     packages=packages,
     package_dir=package_dir,
-    # package_data=package_data,
     install_requires=['six'],
     include_package_data=True
 )
