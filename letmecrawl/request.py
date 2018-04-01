@@ -3,14 +3,15 @@ from __future__ import print_function
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
-
 import httplib
 
 from urlparse import urlparse
 
 
-def request(url, method='GET', proxy_ip=None, proxy_port=None, timeout=5):
+check_endpoint = 'http://ifconfig.co/'
 
+
+def request(url, method='GET', proxy_ip=None, proxy_port=None, timeout=5):
     parts = urlparse(url)
 
     connection = httplib.HTTPSConnection if parts[0] == 'https' else httplib.HTTPConnection
@@ -23,6 +24,15 @@ def request(url, method='GET', proxy_ip=None, proxy_port=None, timeout=5):
         path = parts.path or '/'
     con.request(method, path)
     return con.getresponse()
+
+
+def test_proxy(proxy_ip=None, proxy_port=None):
+    return proxy_ip in request(
+        url=check_endpoint,
+        method='GET',
+        proxy_ip=proxy_ip,
+        proxy_port=proxy_port
+    ).read()
 
 
 def read(url):
