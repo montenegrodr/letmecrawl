@@ -4,17 +4,22 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 from six import with_metaclass
 
+import sys
 import time
 import logging
 import threading
 
 from .request import test_proxy
-from sys import maxint
 from operator import attrgetter
+
+if sys.version_info[0] < 3:
+    from sys import maxint
+else:
+    from sys import maxsize as maxint
 
 logger = logging.getLogger(__name__)
 
-THREAD_RELOAD_TIME = 60 # seconds
+THREAD_RELOAD_TIME = 60   # seconds
 
 MINIMUM_ELAPSED = 5
 
