@@ -8,7 +8,7 @@ Curate proxies from various sources in terms of latency. Supported on python 2.7
 
     >> from letmecrawl import letmecrawl
     >> for proxy in letmecrawl():
-    >>     print proxy
+    >>     print(proxy)
     88.99.11.10:6666
 
 
