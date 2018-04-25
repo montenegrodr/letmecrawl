@@ -3,10 +3,14 @@ from __future__ import print_function
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
-import httplib
+import sys
 
-from urlparse import urlparse
-
+if sys.version_info[0] < 3:
+    import httplib
+    from urlparse import urlparse
+else:
+    import http.client as httplib
+    from urllib.parse import urlparse
 
 check_endpoint = 'http://ifconfig.co/'
 
@@ -32,7 +36,7 @@ def test_proxy(proxy_ip=None, proxy_port=None):
         method='GET',
         proxy_ip=proxy_ip,
         proxy_port=proxy_port
-    ).read()
+    ).read().decode('utf-8')
 
 
 def read(url):
@@ -40,4 +44,4 @@ def read(url):
     con = request(url)
     content = con.read()
     con.close()
-    return content
+    return content.decode('utf-8')

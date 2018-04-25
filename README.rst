@@ -1,7 +1,7 @@
 Let me crawl
 =======================
 
-Curate proxies from various sources in terms of latency. Supported on python 2.7.
+Curate proxies from various sources in terms of latency. Supported on python 2.7.* and >3.4.
 
 
 .. code-block:: bash

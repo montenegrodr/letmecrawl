@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-
 import os
-import sys
 
 from setuptools import setup
 
@@ -11,10 +9,6 @@ rootdir = os.path.abspath(os.path.dirname(__file__))
 
 # Restructured text project description read from file
 long_description = open(os.path.join(rootdir, 'README.rst')).read()
-
-# Python 2.7 or later needed
-if sys.version_info < (2, 7, 0, 'final', 0):
-    raise SystemExit, 'Python 2.7 or later is required!'
 
 # Build a list of all project modules
 packages = []
@@ -26,7 +20,7 @@ package_dir = {name: name}
 
 setup(
     name=name,
-    version='0.9',
+    version='0.10',
     description='let me crawl',
     long_description=long_description,
     url='https://github.com/montenegrodr/letmecrawl',
@@ -35,8 +29,17 @@ setup(
     license='MIT',
     classifiers=[
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.0',
+        'Programming Language :: Python :: 3.1',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7'
     ],
-    download_url='https://github.com/montenegrodr/letmecrawl/archive/0.0.5.tar.gz',
+    download_url='https://github.com/montenegrodr/letmecrawl/archive/0.0.10.tar.gz',
     keywords='scrape crawl',
     packages=packages,
     package_dir=package_dir,
