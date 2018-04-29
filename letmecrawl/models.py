@@ -107,9 +107,9 @@ class OrderedTable(with_metaclass(Singleton, object)):
     def remove(self, item):
         try:
             self.table.remove(item)
-            logging.debug('Removed {}'.format(item))
+            logger.debug('Removed {}'.format(item))
         except ValueError:
-            logging.debug('Tried to remove {}'.format(item))
+            logger.debug('Tried to remove {}'.format(item))
 
     def get_sorted_table(self):
         return sorted(
@@ -129,7 +129,7 @@ class OrderedTable(with_metaclass(Singleton, object)):
         return len(self.table)
 
     def stop(self):
-        logging.debug('Stopping all tasks')
+        logger.debug('Stopping all tasks')
         self.keep_alive = False
         for item in self.table:
             item.stop()
