@@ -14,6 +14,7 @@ import pkg_resources
 
 from .sources import Source
 from .models import OrderedTable, Singleton
+from random import shuffle
 
 logger = logging.getLogger(__name__)
 
@@ -43,6 +44,8 @@ def curate():
         all_sources = []
         for s in sources:
             all_sources.extend(s.list())
+
+        shuffle(all_sources)
 
         for s in all_sources:
             table.add(s)
