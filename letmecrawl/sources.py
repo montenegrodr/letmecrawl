@@ -10,7 +10,7 @@ from . import request
 
 
 ip_pattern = '(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\:\d{2,5}'
-
+ip_tag_pattern = '(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)<\/td><td>\d{2,5}'
 
 class ParserNotFoundException(Exception):
     pass
@@ -24,6 +24,7 @@ class Source(object):
     def factory(name, url):
         if name == 'spy': return Spys(url)
         if name == 'stamparm': return Stamparm(url)
+        if name == 'us-proxy': return UsProxy(url)
         raise ParserNotFoundException
 
 
@@ -47,3 +48,10 @@ class Stamparm(Source):
             Proxy('{}:{}'.format(s.get('ip'), s.get('port')))
             for s in json.loads(content) if s.get('proto', '') == 'http'
             ]
+
+
+class UsProxy(Source):
+    def list(self):
+        content = request.read(self.url)
+        ips = re.findall(ip_tag_pattern, content)
+        return [Proxy(ip.replace('</td><td>',':')) for ip in ips]

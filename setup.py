@@ -20,7 +20,7 @@ package_dir = {name: name}
 
 setup(
     name=name,
-    version='0.11',
+    version='0.12',
     description='let me crawl',
     long_description=long_description,
     url='https://github.com/montenegrodr/letmecrawl',
@@ -39,8 +39,8 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7'
     ],
-    download_url='https://github.com/montenegrodr/letmecrawl/archive/0.0.11.tar.gz',
-    keywords='scrape crawl',
+    download_url='https://github.com/montenegrodr/letmecrawl/archive/0.0.12.tar.gz',
+    keywords='scraper crawler proxy',
     packages=packages,
     package_dir=package_dir,
     install_requires=['six'],
