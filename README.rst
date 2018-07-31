@@ -22,12 +22,13 @@ Installation
 Docker
 -----------------
 
-Use docker image as a http service service:
+Use docker image as a http service:
 
 .. code-block:: bash
 
     docker pull montenegrodr/letmecrawl:latest
 
+Request proxy from top of the queue:
 
 .. code-block:: bash
 
