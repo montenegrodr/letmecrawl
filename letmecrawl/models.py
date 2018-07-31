@@ -23,6 +23,7 @@ THREAD_RELOAD_TIME = 60   # seconds
 
 MINIMUM_ELAPSED = 5
 
+
 class Singleton(type):
     _instances = {}
 
