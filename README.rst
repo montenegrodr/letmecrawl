@@ -28,6 +28,12 @@ Use docker image as a http service:
 
     docker pull montenegrodr/letmecrawl:latest
 
+Running:
+
+.. code-block:: bash
+
+    docker run -p 8000:8000 montenegrodr/letmecrawl:latest
+
 Request proxy from top of the queue:
 
 .. code-block:: bash
