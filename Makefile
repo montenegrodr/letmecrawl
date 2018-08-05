@@ -1,5 +1,5 @@
 VERSION    := "0.13"
-DOCKER_TAG := "0.1"
+DOCKER_TAG := "0.2"
 
 .PHONY: tag
 tag:
@@ -15,10 +15,10 @@ upload:
 
 .PHONY: build-docker
 build-docker:
-	sudo docker build . -t letmecrawl:${DOCKER_TAG}
-	sudo docker build . -t letmecrawl:latest
+	sudo docker build . -t montenegrodr/letmecrawl:${DOCKER_TAG}
+	sudo docker build . -t montenegrodr/letmecrawl:latest
 
 .PHONY: push-docker
 push-docker:
-    sudo docker push montenegrodr/letmecrawl:${DOCKER_TAG}
+	sudo docker push montenegrodr/letmecrawl:${DOCKER_TAG}
 	sudo docker push montenegrodr/letmecrawl:latest
