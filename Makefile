@@ -15,10 +15,10 @@ upload:
 
 .PHONY: build-docker
 build-docker:
-	sudo docker build . -t montenegrodr/letmecrawl:${DOCKER_TAG}
-	sudo docker build . -t montenegrodr/letmecrawl:latest
+	sudo docker build . -t montenegrodr/letmecrawl-br:${DOCKER_TAG}
+	sudo docker build . -t montenegrodr/letmecrawl-br:latest
 
 .PHONY: push-docker
 push-docker:
-	sudo docker push montenegrodr/letmecrawl:${DOCKER_TAG}
-	sudo docker push montenegrodr/letmecrawl:latest
+	sudo docker push montenegrodr/letmecrawl-br:${DOCKER_TAG}
+	sudo docker push montenegrodr/letmecrawl-br:latest
